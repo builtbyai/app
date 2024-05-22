@@ -1,0 +1,292 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laminate Shingle Selector | Built By Ward</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #434343, #000000);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            width: 90%;
+            max-width: 1000px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            margin-bottom: 30px;
+        }
+        .logo {
+            display: block;
+            margin: 0 auto 20px;
+            max-width: 200px;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-top: 20px;
+            font-size: 1.1em;
+        }
+        select, button {
+            width: 100%;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.1em;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        #results {
+            margin-top: 30px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .result-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 15px;
+            width: 250px;
+            text-align: left;
+            position: relative;
+            transition: transform 0.3s;
+        }
+        .result-item:hover {
+            transform: scale(1.05);
+        }
+        .result-item img {
+            width: 100%;
+            border-radius: 5px;
+        }
+        .result-item h3 {
+            margin: 10px 0;
+            font-size: 1.3em;
+        }
+        .result-item .tooltip {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 10;
+        }
+        .result-item:hover .tooltip {
+            display: block;
+        }
+        .spinner {
+            display: none;
+            margin: 20px auto;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #007bff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .video-link {
+            display: block;
+            margin-top: 10px;
+            color: #007bff;
+            text-decoration: underline;
+        }
+        .color-picker {
+            margin-top: 20px;
+        }
+        .color-picker input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1.1em;
+        }
+        .educational-content {
+            margin-top: 10px;
+            font-size: 0.9em;
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="https://media.discordapp.net/attachments/1196599348197335193/1242742637799276596/Built_By_Ward_Transparent_3_smaller.png?ex=664ef1c5&is=664da045&hm=2a7374258cbfcb5632319e88fa1e7d97bd3a281b653c3895d3e842314132fe86&=&format=webp&quality=lossless&width=831&height=848" alt="Built By Ward Logo" class="logo">
+        <h1>Laminate Shingle Selector</h1>
+        <p>Select your preferences to find the best laminate shingle option for your home, offered by Built By Ward.</p>
+        
+        <label for="durability">Durability:</label>
+        <select id="durability">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+        
+        <label for="aesthetics">Aesthetics:</label>
+        <select id="aesthetics">
+            <option value="moderate">Moderate</option>
+            <option value="premium">Premium</option>
+        </select>
+        
+        <label for="stormResistance">Storm Resistance:</label>
+        <select id="stormResistance">
+            <option value="standard">Standard</option>
+            <option value="enhanced">Enhanced</option>
+        </select>
+
+        <label for="insulation">Insulation:</label>
+        <select id="insulation">
+            <option value="fiberglass">Fiberglass</option>
+            <option value="sprayFoam">Spray Foam</option>
+            <option value="cellulose">Cellulose</option>
+            <option value="mineralWool">Mineral Wool</option>
+            <option value="reflective">Reflective</option>
+        </select>
+
+        <label for="underlayment">Underlayment:</label>
+        <select id="underlayment">
+            <option value="feltPaper">Felt Paper</option>
+            <option value="synthetic">Synthetic</option>
+            <option value="rubberized">Rubberized Asphalt</option>
+            <option value="peelAndStick">Peel and Stick</option>
+            <option value="selfAdhered">Self-Adhered</option>
+        </select>
+
+        <label for="gutters">Gutters:</label>
+        <select id="gutters">
+            <option value="aluminum">Aluminum</option>
+            <option value="copper">Copper</option>
+            <option value="vinyl">Vinyl</option>
+        </select>
+
+        <label for="downspouts">Downspouts:</label>
+        <select id="downspouts">
+            <option value="round">Round</option>
+            <option value="rectangular">Rectangular</option>
+            <option value="kStyle">K-Style</option>
+        </select>
+
+        <label for="chimneyCaps">Chimney Caps:</label>
+        <select id="chimneyCaps">
+            <option value="copper">Copper</option>
+            <option value="stainlessSteel">Stainless Steel</option>
+            <option value="galvanizedSteel">Galvanized Steel</option>
+            <option value="aluminum">Aluminum</option>
+        </select>
+
+        <label for="ventCaps">Vent Caps:</label>
+        <select id="ventCaps">
+            <option value="copper">Copper</option>
+            <option value="stainlessSteel">Stainless Steel</option>
+            <option value="galvanizedSteel">Galvanized Steel</option>
+            <option value="aluminum">Aluminum</option>
+        </select>
+
+        <label for="roofColor">Roof Color:</label>
+        <div class="color-picker">
+            <input type="color" id="roofColor" name="roofColor" value="#ff0000">
+        </div>
+        
+        <button id="find-material"><i class="fas fa-search"></i> Find Laminate Shingle</button>
+        
+        <div class="spinner" id="spinner"></div>
+        <div id="results">
+            <!-- Results will be displayed here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('find-material').addEventListener('click', function() {
+            const durability = document.getElementById('durability').value;
+            const aesthetics = document.getElementById('aesthetics').value;
+            const stormResistance = document.getElementById('stormResistance').value;
+            const insulation = document.getElementById('insulation').value;
+            const underlayment = document.getElementById('underlayment').value;
+            const gutters = document.getElementById('gutters').value;
+            const downspouts = document.getElementById('downspouts').value;
+            const chimneyCaps = document.getElementById('chimneyCaps').value;
+            const ventCaps = document.getElementById('ventCaps').value;
+            const roofColor = document.getElementById('roofColor').value;
+            const resultsDiv = document.getElementById('results');
+            const spinner = document.getElementById('spinner');
+            
+            resultsDiv.innerHTML = '';
+            spinner.style.display = 'block';
+            
+            const materials = [
+                { name: "Certainteed Landmark", img: "https://certainteed.widen.net/content/t8a2qybnkx/web/landmark-drift-B12-lightbrick-dml.tif?crop=yes&k=c&w=1600&h=687&itok=cPqk-ew5", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "fiberglass", underlayment: "synthetic", gutters: "aluminum", downspouts: "round", chimneyCaps: "copper", ventCaps: "stainlessSteel", roofColor: "#ff0000", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "GAF Timberline HDZ", img: "https://certainteed.widen.net/content/ib0zf5rvzc/web/ClimateFlex-Photo-TX%20(10).jpg?crop=yes&k=c&w=272&h=181&itok=orBYZvfc", durability: "high", aesthetics: "premium", stormResistance: "standard", insulation: "sprayFoam", underlayment: "feltPaper", gutters: "copper", downspouts: "rectangular", chimneyCaps: "stainlessSteel", ventCaps: "copper", roofColor: "#00ff00", description: "High durability and premium aesthetics with standard storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Duration", img: "https://certainteed.widen.net/content/qio4hi8fkr/web/landmarkpro-mdchbl-A02-clay-dml.tif?crop=yes&k=c&w=272&h=181&itok=JJmEtdwV", durability: "medium", aesthetics: "moderate", stormResistance: "enhanced", insulation: "cellulose", underlayment: "rubberized", gutters: "vinyl", downspouts: "kStyle", chimneyCaps: "galvanizedSteel", ventCaps: "aluminum", roofColor: "#0000ff", description: "Medium durability and moderate aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Atlas Pinnacle Pristine", img: "https://certainteed.widen.net/content/ncwxn2thkp/web/belmont-blgr-05-house-dml.tif?crop=yes&k=c&w=304&h=406&itok=Df8PV6O_", durability: "medium", aesthetics: "moderate", stormResistance: "standard", insulation: "mineralWool", underlayment: "selfAdhered", gutters: "aluminum", downspouts: "round", chimneyCaps: "aluminum", ventCaps: "stainlessSteel", roofColor: "#ffff00", description: "Medium durability and moderate aesthetics with standard storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Brownwood", img: "https://www.lowes.com/pd/Owens-Corning-Oakridge-32-8-Sq-Ft-Brownwood-Laminated-Architectural-Roof-Shingles/3010417", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "reflective", underlayment: "synthetic", gutters: "copper", downspouts: "rectangular", chimneyCaps: "copper", ventCaps: "stainlessSteel", roofColor: "#ff00ff", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Driftwood", img: "https://mobileimages.lowes.com/productimages/8e15583d-d1a1-4ec4-805d-6b131cfa1489/42237078.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "fiberglass", underlayment: "synthetic", gutters: "aluminum", downspouts: "round", chimneyCaps: "copper", ventCaps: "stainlessSteel", roofColor: "#ff0000", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Onyx Black", img: "https://mobileimages.lowes.com/productimages/2729aa56-77fa-4519-8b40-2fd0b01698e5/08052782.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "sprayFoam", underlayment: "synthetic", gutters: "copper", downspouts: "rectangular", chimneyCaps: "stainlessSteel", ventCaps: "copper", roofColor: "#00ff00", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Estate Gray", img: "https://mobileimages.lowes.com/productimages/ed0609a9-acfc-475d-a42f-bbc2835ab3df/42237142.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "cellulose", underlayment: "synthetic", gutters: "vinyl", downspouts: "kStyle", chimneyCaps: "galvanizedSteel", ventCaps: "aluminum", roofColor: "#0000ff", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Desert Tan", img: "https://mobileimages.lowes.com/productimages/05ccfa0d-851f-49f2-8be6-b84d8cda8241/61122374.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "mineralWool", underlayment: "synthetic", gutters: "aluminum", downspouts: "round", chimneyCaps: "aluminum", ventCaps: "stainlessSteel", roofColor: "#ffff00", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Shasta White", img: "https://mobileimages.lowes.com/productimages/9a1f120d-9439-4c65-a2ad-1df184a9333a/02582164.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "reflective", underlayment: "synthetic", gutters: "copper", downspouts: "rectangular", chimneyCaps: "copper", ventCaps: "stainlessSteel", roofColor: "#ff00ff", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" },
+                { name: "Owens Corning Oakridge Harbor Blue", img: "https://mobileimages.lowes.com/productimages/5c56545b-0903-4599-8ae8-e06b96def86c/04529205.jpg?size=pdhism", durability: "high", aesthetics: "premium", stormResistance: "enhanced", insulation: "sprayFoam", underlayment: "synthetic", gutters: "copper", downspouts: "rectangular", chimneyCaps: "stainlessSteel", ventCaps: "copper", roofColor: "#00ff00", description: "High durability and premium aesthetics with enhanced storm resistance.", video: "https://www.youtube.com/watch?v=dQw4w9WgXcQ" }
+            ];
+            
+            setTimeout(() => {
+                resultsDiv.innerHTML = '<h2>Recommended Laminate Shingles:</h2>';
+                materials.forEach(material => {
+                    resultsDiv.innerHTML += `
+                        <div class="result-item">
+                            <img src="${material.img}" alt="${material.name}">
+                            <h3>${material.name}</h3>
+                            <a class="video-link" href="${material.video}" target="_blank">Watch Video</a>
+                            <div class="educational-content">
+                                <p>${material.description}</p>
+                                <p><strong>Durability:</strong> ${material.durability}</p>
+                                <p><strong>Aesthetics:</strong> ${material.aesthetics}</p>
+                                <p><strong>Storm Resistance:</strong> ${material.stormResistance}</p>
+                                <p><strong>Insulation:</strong> ${material.insulation}</p>
+                                <p><strong>Underlayment:</strong> ${material.underlayment}</p>
+                                <p><strong>Gutters:</strong> ${material.gutters}</p>
+                                <p><strong>Downspouts:</strong> ${material.downspouts}</p>
+                                <p><strong>Chimney Caps:</strong> ${material.chimneyCaps}</p>
+                                <p><strong>Vent Caps:</strong> ${material.ventCaps}</p>
+                                <p><strong>Roof Color:</strong> ${material.roofColor}</p>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                spinner.style.display = 'none';
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
